@@ -2,7 +2,7 @@ let uuid = 0
 
 class Dep {
   constructor() {
-    this.id = uuid++
+    this.id = ++uuid
     // 存储key => [subs]
     // 每一个被Observe的对象都有一个Dep实例，用于存储订阅当前对象的key值变化的watcher
     this._subs = new Map()

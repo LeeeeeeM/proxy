@@ -8,7 +8,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
     main: path.resolve(__dirname, './src/main.js'),
-    test: path.resolve(__dirname, './test.js')
+    // test: path.resolve(__dirname, './test.js')
   },
   mode: devMode ? 'development' : 'production',
   output: {
@@ -49,12 +49,12 @@ module.exports = {
       inject: 'body',
       chunks: ['main']
     }),
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      filename: 'test.html',
-      inject: 'body',
-      chunks: ['test']
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './index.html',
+    //   filename: 'test.html',
+    //   inject: 'body',
+    //   chunks: ['test']
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })

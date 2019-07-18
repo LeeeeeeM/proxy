@@ -1,4 +1,5 @@
 let queue = new Set()
+let nextTick = null
 
 function flush() {
   queue.forEach(watcher => {
@@ -9,7 +10,11 @@ function flush() {
 
 function updateQueue(watcher) {
   queue.add(watcher)
-  Promise.resolve().then(() => flush())
+  if (nextTick) return
+  nextTick = Promise.resolve().then(() => {
+    nextTick = null
+    flush()
+  })
 }
 
 export default updateQueue

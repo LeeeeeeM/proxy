@@ -1,11 +1,11 @@
 import Dep from './dep'
 import updateQueue from './updateQueue'
 
-let id = 0
+let uuid = 0
 
 class Watcher {
   constructor(vm, exp, cb) {
-    this.id = ++id
+    this.id = ++uuid
     this.vm = vm
     this.exp = exp
     this.cb = cb
