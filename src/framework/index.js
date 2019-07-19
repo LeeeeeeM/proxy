@@ -84,6 +84,10 @@ Lite.prototype.renderVnode = function () {
 
 Lite.prototype._renderProxy = function() {
   const vm = this
+  if (vm._lastRemoveMethods && vm._lastRemoveMethods.length) {
+    vm._lastRemoveMethods.forEach(method => method())
+  }
+  vm._lastRemoveMethods = []
   vm.$vnode = compile.call(vm, vm.render)
 }
 

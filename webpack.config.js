@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production'
 
-
 module.exports = {
   entry: {
     main: path.resolve(__dirname, './src/main.js'),
@@ -12,9 +11,9 @@ module.exports = {
   },
   mode: devMode ? 'development' : 'production',
   output: {
-    path: path.resolve(__dirname, './src/main.js'),
+    path: path.resolve(__dirname, 'example'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: devMode ? '/' : ''
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -62,5 +61,5 @@ module.exports = {
   node: {
     fs: 'empty',
     console: true
-  }
+  } 
 }

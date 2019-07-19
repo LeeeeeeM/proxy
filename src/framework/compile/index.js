@@ -27,6 +27,9 @@ function compileDirective(node) {
   if (node.events) {
     Object.entries(node.events).forEach(([name, value]) => {
       element.addEventListener(name, vm[value])
+      vm._lastRemoveMethods.push(() => {
+        element.removeEventListener(name, vm[value])
+      })
     })
   }
 
