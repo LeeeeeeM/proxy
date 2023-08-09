@@ -16,9 +16,11 @@ Lite.prototype._init = function(options) {
   this.updateDOM = this.updateDOM.bind(this)
   this.initData(this, options.data)
   this._initMethods()
+  // 渲染次数
+  this._renderTimes = 0;
   this._renderWather = new Watcher(this, () => {
     // 需要每次发生变化返回的值不一样
-    return Math.random()
+    return ++this._renderTimes;
   }, this.updateDOM)
   this.compile()
   callHook(this, 'mounted')
@@ -26,6 +28,7 @@ Lite.prototype._init = function(options) {
 
 Lite.prototype._parseTemplate = function(template) {
   const result = parser.parse(template, {}).jsonTemplate
+  console.log(result);
   if (checkEmpty(result)) {
     console.error(`模板不能为空`)
   }
