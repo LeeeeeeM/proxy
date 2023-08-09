@@ -28,7 +28,6 @@ Lite.prototype._init = function(options) {
 
 Lite.prototype._parseTemplate = function(template) {
   const result = parser.parse(template, {}).jsonTemplate
-  console.log(result);
   if (checkEmpty(result)) {
     console.error(`模板不能为空`)
   }

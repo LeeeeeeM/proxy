@@ -60,3 +60,5 @@ setTimeout(() => {
     count: 1000
   }
 })
+
+window.vm = a;

@@ -35,7 +35,7 @@ function compileDirective(node) {
 
   if (node.children && node.children.length) {
     node.children.forEach(n => {
-      const renderNode = traverseNode.call(vm, n)
+      const renderNode = compile.call(vm, n)
       renderNode && element.appendChild(renderNode)
     })
   }
@@ -44,9 +44,9 @@ function compileDirective(node) {
 }
 
 
-function traverseNode(node) {
+function compile(node) {
   const vm = this
   return compileDirective.call(vm, node)
 }
 
-export default traverseNode
+export default compile
